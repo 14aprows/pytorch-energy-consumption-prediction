@@ -5,9 +5,9 @@ import torch.nn.functional as F
 import pandas as pd
 
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
-from src.data.loaders import create_loaders
-from src.models.mlp import MLPRegressor
-from src.trainers.trainer import Trainer
+from data.loaders import create_loaders
+from models.mlp import MLPRegressor
+from trainers.trainer import Trainer
 
 def set_seed(seed):
     random.seed(seed)
@@ -59,7 +59,7 @@ def train():
     train_loader, val_loader = create_loaders(X, y, batch_size=128, val_size=0.2, seed=42)
 
     model = MLPRegressor(input_dim=X.shape[1])
-    optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=0.001)
 
     trainer = Trainer(
         model=model,
