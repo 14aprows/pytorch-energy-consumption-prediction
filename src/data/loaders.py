@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-from src.data.dataset import EnergyDataset
+from .dataset import EnergyDataset
 from sklearn.model_selection import train_test_split
 
 def create_loaders(X, y, batch_size=128, val_size=0.2, seed=42):
